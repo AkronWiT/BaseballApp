@@ -1,0 +1,123 @@
+[
+  {
+    "id": 1,
+    "firstName": "Jake",
+    "lastName": "Bauers"
+  },
+  {
+    "id": 2,
+    "firstName": "Francisco",
+    "lastName": "Lindor"
+  },
+  {
+    "id": 3,
+    "firstName": "Jose",
+    "lastName": "Ramirez"
+  },
+  {
+    "id": 4,
+    "firstName": "Delino",
+    "lastName": "Deshields"
+  },
+  {
+    "id": 5,
+    "firstName": "Carlos",
+    "lastName": "Carrasco"
+  },
+  {
+    "id": 6,
+    "firstName": "Carlos",
+    "lastName": "Santana"
+  },
+  {
+    "id": 7,
+    "firstName": "Cesar",
+    "lastName": "Hernandez"
+  },
+  {
+    "id": 8,
+    "firstName": "Robert",
+    "lastName": "Perez"
+  },
+  {
+    "id": 9,
+    "firstName": "Oscar",
+    "lastName": "Mercado"
+  },
+  {
+    "id": 10,
+    "firstName": "Greg",
+    "lastName": "Allen"
+  },
+  {
+    "id": 11,
+    "firstName": "Tyler",
+    "lastName": "Naquin"
+  },
+  {
+    "id": 12,
+    "firstName": "Bradley",
+    "lastName": "Zimmer"
+  },
+  {
+    "id": 13,
+    "firstName": "Sandy",
+    "lastName": "Leon"
+  },
+  {
+    "id": 14,
+    "firstName": "Christian",
+    "lastName": "Arroyo"
+  },
+  {
+    "id": 15,
+    "firstName": "Bobby",
+    "lastName": "Bradley"
+  },
+  {
+    "id": 16,
+    "firstName": "Andres",
+    "lastName": "Velazquez"
+  },
+  {
+    "id": 17,
+    "firstName": "Mike",
+    "lastName": "Clevinger",
+    "Position": "Pitcher"
+  },
+  {
+    "id": 18,
+    "firstName": "Carlos",
+    "lastName": "Carrasco",
+    "Position": "Pitcher"
+  },
+  {
+    "id": 19,
+    "firstName": "Shane",
+    "lastName": "Bieber",
+    "Position": "Pitcher"
+  },
+  {
+    "id": 20,
+    "firstName": "Jordan",
+    "lastName": "Luplow"
+  },
+  {
+    "id": 21,
+    "firstName": "Brad",
+    "lastName": "Hand",
+    "Position": "Pitcher"
+  },
+  {
+    "id": 22,
+    "firstName": "Emmanuel",
+    "lastName": "Chase",
+    "Position": "Pitcher"
+  },
+  {
+    "id": 23,
+    "firstName": "Zach",
+    "lastName": "Plesac",
+    "Position": "Pitcher"
+  }
+]

@@ -1,11 +1,16 @@
 <template>
-  <div>
-    ScoreSheet
+  <div v-if="players">
+    <span  v-for="player in players" :key="player.id">
+          {{ player }}
+    </span>
+    <button @click="loadPlayers">
+      Players
+    </button>
   </div>
 </template>
 
 <script>
-
+import  { playersData } from '../shared';
 
 export default {
   name: 'ScoreSheet',
@@ -17,16 +22,18 @@ export default {
   },
   data() {
     return {
-      
+      players: [],
     };
   },
-  created() {
-    
-  },
-  computed: {
-    
+  async created() {
+    await this.loadPlayers();
   },
   methods: {
+    async loadPlayers() {
+      this.player = [];
+      this.message = 'getting the Players, please be patient';
+      this.players = await playersData.getPlayers();
+    }
   }
 };
 </script>
