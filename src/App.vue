@@ -1,25 +1,12 @@
 <template>
   <div id="app">
-    <router-view />
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/scoresheet">ScoreSheet</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-import Player from './components/Player.vue'
-import AtBat from './components/AtBat.vue'
-import Inning from './components/Inning.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld,
-    Player,
-    AtBat,
-    Inning
-  }
-}
-</script>
 
 <style>
 #app {
@@ -28,6 +15,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
