@@ -1,7 +1,9 @@
 <template>
-  <div>
-      <span>1</span>
-      <span>Tasha Markovich</span>
+<!-- v-if's would be better as a filter -->
+  <div class="playerBlock" 
+      v-if="player.Position!='Pitcher' && player.id <='9'" >
+    {{player.firstName}}
+    {{player.lastName}}
   </div>
 </template>
 
@@ -9,25 +11,15 @@
 export default {
   name: 'Player',
   props: {
-    msg: String
+    id:{
+      type: Number
+    },
+    player: {}
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+      @import '../assets/styles/player.css';
 </style>

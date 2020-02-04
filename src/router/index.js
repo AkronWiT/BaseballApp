@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import ScoreSheet from '../views/ScoreSheet.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'ScoreSheet',
+    component: ScoreSheet
   },
   {
     path: '/scoresheet',

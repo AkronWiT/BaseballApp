@@ -1,0 +1,26 @@
+.top{
+  display:block;
+  text-align: center;
+  vertical-align:middle;
+  border:.5px
+}
+
+.bottom {
+  display:block;
+  text-align: center;
+}
+
+#outfield {
+   width:100%;
+}
+
+#base {
+  float:left;
+  width:50%;
+}
+
+#hit {
+    float:left;
+}
+
+

@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    PlayerInfo
   </div>
 </template>
 

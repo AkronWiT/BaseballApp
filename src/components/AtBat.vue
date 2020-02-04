@@ -1,5 +1,10 @@
 <template>
  <div>
+   <div id="outfield" class="top">1</div>
+   <div class="bottom">
+        <div id="base">5</div>
+        <div id="hit">BB</div>
+   </div>
 </div>
   
 </template>

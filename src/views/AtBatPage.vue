@@ -1,6 +1,6 @@
 <template>
   <div>
-    This is a page.
+    At Bat Page
   </div>
 </template>
 

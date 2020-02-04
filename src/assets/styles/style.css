@@ -1,0 +1,47 @@
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+.grid-container {
+  display:inline-block;
+  width:10em;
+}
+
+.grid-player, .grid-blank{
+  display:block;
+  float:left;
+  border:Gray solid 1px;
+  width:12%;
+  height:3em;
+  text-align:left;
+}
+
+.grid-blank{
+  border:white solid 1px;
+}
+
+.grid-inning, .grid-item{
+  display:block;
+  float:left;
+  border:Gray solid 1px;
+  width: 9%;
+  height:3em;
+  text-align:left;
+}
