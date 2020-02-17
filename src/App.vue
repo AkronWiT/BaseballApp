@@ -9,5 +9,5 @@
 </template>
 
 <style>
-  @import './assets/styles/style.css';
+  @import './assets/styles/Style.css';
 </style>

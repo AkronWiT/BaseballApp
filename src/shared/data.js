@@ -15,6 +15,22 @@ const getPlayers = async function() {
     return [];
   }
 };
+// todo write logic to replace 0 with "clear"
+const getScoring = async function() {
+  
+  try {
+    
+    const response = await axios.get(`api/scoring.json`);
+
+    let data = parseList(response);
+    
+    return data;
+
+  } catch (error) {
+    //console.error(error);
+    return [];
+  }
+};
 
 const parseList = response => {
   if (response.status !== 200) throw Error(response.message);
@@ -26,6 +42,7 @@ const parseList = response => {
   return list;
 };
 
-export const playersData = {
+export const Data = {
   getPlayers, 
+  getScoring
 };

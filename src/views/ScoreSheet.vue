@@ -35,10 +35,10 @@
 </template>
 
 <script>
-import  { playersData } from '../shared';
-import Player from '../components/Player';
-import AtBat from '../components/AtBat';
-import Inning from '../components/Inning';
+import  { Data } from '../shared';
+import Player from '../components/ScoreSheet/Player';
+import AtBat from '../components/ScoreSheet/AtBat';
+import Inning from '../components/ScoreSheet/Inning';
 
 export default {
   name: 'ScoreSheet',
@@ -66,7 +66,7 @@ export default {
     async loadPlayers() {
       this.player = [];
       this.message = 'getting the Players, please be patient';
-      this.players = await playersData.getPlayers();
+      this.players = await Data.getPlayers();
     }
   }
 };
