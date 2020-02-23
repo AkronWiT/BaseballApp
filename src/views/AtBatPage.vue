@@ -1,7 +1,7 @@
 <template>
   <div id="atBatPage">
     <div id="topPage">
-        <div  class="top left right bottom diamond">
+        <div  class="toFirst toSecond toThird toHome diamond">
           <div class="square">
             <!-- todo make a better logic for hiding squares -->
               <span @click="setValue(1,0)" class="fielding">{{binding.field[0]}}</span>
@@ -18,14 +18,16 @@
               <span  v-if="binding.field[10]!=0" @click="setValue(1,11)" class="fielding">{{binding.field[11]}}</span>
           </div>
         </div>
-        <div>
-          <span @click="setValue(0,12)" class="run first">{{binding.field[12]}}</span>
-          <span @click="setValue(0,13)" class="run">{{binding.field[13]}}</span>
-          <span @click="setValue(0,14)" class="run last">{{binding.field[14]}}</span>
-      </div>
-      <div >
+        <div class="runGroup" >
+          <span @click="setValue(0,12)" class="run first">2nd:{{binding.field[12]}} </span>
+          <span @click="setValue(0,13)" class="run">3rd:{{binding.field[13]}}</span>
+        </div>
+        <div class="runGroup" >
+          <span @click="setValue(0,14)" class="run last">Home:{{binding.field[14]}}</span>
+        </div>
+        <div class="hitGroup">
           <span @click="setValue(2,15)" class="hit">{{binding.field[15]}}</span>
-      </div>
+        </div>
     </div>
     <div id="bottomPage" v-if="scores">
         <!-- This does not work because you can iterate on a Model
@@ -58,7 +60,7 @@ export default {
   },
   data() {
     return {
-      binding:{field:[0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
+      binding:{field:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
       fieldSquare:0,
       value:0,
       scores:[],

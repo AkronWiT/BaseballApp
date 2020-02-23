@@ -1,9 +1,21 @@
 <template>
  <div>
-   <div id="outfield" class="top">1</div>
+   <div id="plays" class="top">
+     <span v-for="play in plays" :key="play">
+          {{play}}
+     </span>
+  </div>
    <div class="bottom">
-        <div id="base">5</div>
-        <div id="hit">BB</div>
+        <div id="runs">
+            <span v-for="run in runs" :key="run">
+                {{run}}
+            </span>
+        </div>
+        <div id="hits">
+          <span v-for="hit in hits" :key="hit">
+                {{hit}}
+          </span>
+        </div>
    </div>
 </div>
   
@@ -13,7 +25,18 @@
 export default {
   name: 'AtBat',
   props: {
-    msg: String
+    plays: {
+      type: Array,
+      default: () => [],
+    },
+    hits:{
+      type: Array,
+      default: () => [],
+    },
+    runs:{
+      type: Array,
+      default: () => [],
+    }
   }
 }
 </script>
@@ -33,5 +56,16 @@ li {
 }
 a {
   color: #42b983;
+}
+#plays {
+  border:1px solid blue;
+}
+#runs {
+  float:left;
+  border:1px solid blue;
+}
+#hits {
+  float:right;
+  border:1px solid blue;
 }
 </style>

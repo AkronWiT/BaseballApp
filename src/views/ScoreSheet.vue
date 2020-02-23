@@ -19,11 +19,12 @@
               class="grid-player"
           />
     </router-link>
-    
-    <div v-for="n in 9" :key="n">
-      <router-link to="/AtBatPage">
+    <div v-for="cell in cells[player.id-1]" :key="cell">
+      <router-link :to="{name: 'AtBatPage', params:{cell:cell}}">
           <AtBat
-            :in="n" 
+            :plays="cell.plays"
+            :hits="cell.hits"
+            :runs="cell.runs"
             class="grid-item"
           />
       </router-link>
@@ -56,16 +57,22 @@ export default {
   data() {
     return {
       players: [],
+      cells: [],
       Innings: [1,2,3,4,5,6,7,8,9]
     };
   },
   async created() {
     await this.loadPlayers();
+    await this.loadCells();
   },
   methods: {
+    async loadCells() {
+          this.cells = [];
+          this.cells = await Data.getCells();
+    },
     async loadPlayers() {
       this.player = [];
-      this.message = 'getting the Players, please be patient';
+      // this.message = 'getting the Players, please be patient';
       this.players = await Data.getPlayers();
     }
   }

@@ -21,6 +21,21 @@ const getScoring = async function() {
   try {
     
     const response = await axios.get(`api/scoring.json`);
+    
+    let data = parseList(response);
+    
+    return data;
+
+  } catch (error) {
+    //console.error(error);
+    return [];
+  }
+};
+const getCells = async function() {
+  
+  try {
+    
+    const response = await axios.get(`api/cellInfo.json`);
 
     let data = parseList(response);
     
@@ -44,5 +59,6 @@ const parseList = response => {
 
 export const Data = {
   getPlayers, 
-  getScoring
+  getScoring,
+  getCells
 };
