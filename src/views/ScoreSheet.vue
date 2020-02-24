@@ -19,8 +19,8 @@
               class="grid-player"
           />
     </router-link>
-    <div v-for="cell in cells[player.id-1]" :key="cell">
-      <router-link :to="{name: 'AtBatPage', params:{cell:cell}}">
+    <div v-for="cell in cells[player.id-1]" :key="cell.id">
+      <router-link :to="{name: 'AtBatPage', params:{id:cell.id}}">
           <AtBat
             :plays="cell.plays"
             :hits="cell.hits"
@@ -60,6 +60,9 @@ export default {
       cells: [],
       Innings: [1,2,3,4,5,6,7,8,9]
     };
+  },
+  computed:{
+    
   },
   async created() {
     await this.loadPlayers();

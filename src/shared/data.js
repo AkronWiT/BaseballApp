@@ -20,7 +20,7 @@ const getScoring = async function() {
   
   try {
     
-    const response = await axios.get(`api/scoring.json`);
+    const response = await axios.get(`/api/scoring.json`);
     
     let data = parseList(response);
     
@@ -35,7 +35,7 @@ const getCells = async function() {
   
   try {
     
-    const response = await axios.get(`api/cellInfo.json`);
+    const response = await axios.get(`/api/cellInfo.json`);
 
     let data = parseList(response);
     

@@ -29,7 +29,7 @@
           <span @click="setValue(2,15)" class="hit">{{binding.field[15]}}</span>
         </div>
     </div>
-    <div id="bottomPage" v-if="scores">
+    <div id="bottomPage" v-if="scores[value]">
         <!-- This does not work because you can iterate on a Model
           <div class="options"
         v-for="score in scores[value]['options']" :key="score">
@@ -48,7 +48,8 @@
 </template>
 
 <script>
-import  { Data } from '../shared';
+// import  { Data } from '../shared';
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'AtBatPage',
@@ -63,20 +64,26 @@ export default {
       binding:{field:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
       fieldSquare:0,
       value:0,
-      scores:[],
-      message:""
+      message:"",
+      cell:[]
     };
   },
   async created() {
       await this.loadScores();
+      await this.loadCells(this.id);
+      this.cell = this.getCellById(0);
   },
   computed: {
+    ...mapState(["scores","cells"]),
+    ...mapGetters(['getScoresOptions','getCellById']),
   },
   methods: {
+    ...mapActions(["getScoresAction","getCellsAction"]),
     async loadScores() {
-      this.scores = [];
-      this.message = 'getting the Players, please be patient';
-      this.scores = await Data.getScoring();
+      await this.getScoresAction();
+    },
+    async loadCells(id){
+      await this.getCellsAction(id);
     },
     setValue(value,position){
       this.value = value;
@@ -86,7 +93,6 @@ export default {
       this.binding.field[this.fieldSquare]=score;
       this.$forceUpdate()
     }
-
   }
 };
 </script>
