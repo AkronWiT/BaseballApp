@@ -4,7 +4,7 @@
   margin: auto 0;
 }
 
-.diamond{
+#bases{
   position:relative;
   left:50px;
   width:200px;
@@ -21,22 +21,23 @@
   transform:rotate(-45deg);
 }
 
-.toSecond
-{
-    border-top:1px red solid
-}
-.toHome
-{
-    /* border-bottom:1px red solid */
-}
-.toThird
-{
-    /* border-left:1px red solid */
-}
 .toFirst
 {
     border-right:1px red solid
 }
+.toSecond
+{
+    border-top:1px red solid
+}
+.toThird
+{
+    border-left:1px red solid
+}
+.toHome
+{
+    border-bottom:1px red solid
+}
+
 
 .fielding{
   width:45px;

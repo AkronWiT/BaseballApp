@@ -20,7 +20,7 @@
           />
     </router-link>
     <div v-for="cell in cells[player.id-1]" :key="cell.id">
-      <router-link :to="{name: 'AtBatPage', params:{id:cell.id}}">
+      <router-link :to="{name: 'AtBatPage', params:{playerId:player.id-1,cellId:cell.id}}">
           <AtBat
             :plays="cell.plays"
             :hits="cell.hits"

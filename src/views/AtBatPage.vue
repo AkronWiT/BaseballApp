@@ -1,32 +1,37 @@
 <template>
   <div id="atBatPage">
     <div id="topPage">
-        <div  class="toFirst toSecond toThird toHome diamond">
+        <div id="bases" v-bind:class="{ 'toFirst': binding.hits[0]!=0, 'toSecond': toSecond(1), 'toThird': binding.runs[1]!=0, 'toHome': binding.runs[2]!=0 }">
           <div class="square">
             <!-- todo make a better logic for hiding squares -->
-              <span @click="setValue(1,0)" class="fielding">{{binding.field[0]}}</span>
-              <span v-if="binding.field[0]!=0" @click="setValue(1,1)" class="fielding">{{binding.field[1]}}</span>
-              <span v-if="binding.field[1]!=0" @click="setValue(1,2)" class="fielding">{{binding.field[2]}}</span>
-              <span  v-if="binding.field[2]!=0" @click="setValue(1,3)" class="fielding">{{binding.field[3]}}</span>
-              <span  v-if="binding.field[3]!=0" @click="setValue(1,4)" class="fielding">{{binding.field[4]}}</span>
-              <span  v-if="binding.field[4]!=0" @click="setValue(1,5)" class="fielding">{{binding.field[5]}}</span>
-              <span  v-if="binding.field[5]!=0" @click="setValue(1,6)" class="fielding">{{binding.field[6]}}</span>
-              <span  v-if="binding.field[6]!=0" @click="setValue(1,7)" class="fielding">{{binding.field[7]}}</span>
-              <span  v-if="binding.field[7]!=0" @click="setValue(1,8)" class="fielding">{{binding.field[8]}}</span>
-              <span  v-if="binding.field[8]!=0" @click="setValue(1,9)" class="fielding">{{binding.field[9]}}</span>
-              <span  v-if="binding.field[9]!=0" @click="setValue(1,10)" class="fielding">{{binding.field[10]}}</span>
-              <span  v-if="binding.field[10]!=0" @click="setValue(1,11)" class="fielding">{{binding.field[11]}}</span>
+            <div v-for="n in 11" :key="n" >
+              <span @click="setField(1,n)" 
+              v-if="binding.plays[n-1]!==0" 
+              class="fielding">{{binding.plays[n]}}</span>
+            </div>
+              <!-- <span @click="setValue(1,0)" class="fielding">{{binding.plays[0]}}</span>
+              <span v-if="binding.plays[0]!=0" @click="setPlay(1,1)" class="fielding">{{binding.plays[1]}}</span>
+              <span v-if="binding.plays[1]!=0" @click="setPlay(1,2)" class="fielding">{{binding.plays[2]}}</span>
+              <span  v-if="binding.plays[2]!=0" @click="setField(1,3)" class="fielding">{{binding.plays[3]}}</span>
+              <span  v-if="binding.plays[3]!=0" @click="setField(1,4)" class="fielding">{{binding.plays[4]}}</span>
+              <span  v-if="binding.plays[4]!=0" @click="setField(1,5)" class="fielding">{{binding.plays[5]}}</span>
+              <span  v-if="binding.plays[5]!=0" @click="setField(1,6)" class="fielding">{{binding.plays[6]}}</span>
+              <span  v-if="binding.plays[6]!=0" @click="setField(1,7)" class="fielding">{{binding.plays[7]}}</span>
+              <span  v-if="binding.plays[7]!=0" @click="setField(1,8)" class="fielding">{{binding.plays[8]}}</span>
+              <span  v-if="binding.plays[8]!=0" @click="setField(1,9)" class="fielding">{{binding.plays[9]}}</span>
+              <span  v-if="binding.plays[9]!=0" @click="setField(1,10)" class="fielding">{{binding.plays[10]}}</span>
+              <span  v-if="binding.plays[10]!=0" @click="setField(1,11)" class="fielding">{{binding.plays[11]}}</span> -->
           </div>
         </div>
         <div class="runGroup" >
-          <span @click="setValue(0,12)" class="run first">2nd:{{binding.field[12]}} </span>
-          <span @click="setValue(0,13)" class="run">3rd:{{binding.field[13]}}</span>
+          <span @click="setField(0,0)" class="run first">2nd:{{binding.runs[0]}} </span>
+          <span @click="setField(0,1)" class="run">3rd:{{binding.runs[1]}}</span>
         </div>
         <div class="runGroup" >
-          <span @click="setValue(0,14)" class="run last">Home:{{binding.field[14]}}</span>
+          <span @click="setField(0,2)" class="run last">Home:{{binding.runs[2]}}</span>
         </div>
         <div class="hitGroup">
-          <span @click="setValue(2,15)" class="hit">{{binding.field[15]}}</span>
+          <span @click="setField(2,0)" class="hit">{{binding.hits[0]}}</span>
         </div>
     </div>
     <div id="bottomPage" v-if="scores[value]">
@@ -38,7 +43,7 @@
         <div>
           <span  class="options" 
           v-for="score in scores[value]['options']" :key="score"
-          @click="setField(score)">
+          @click="updateField(score)">
               {{score}}
           </span>
         </div>
@@ -54,44 +59,74 @@ import { mapState, mapActions, mapGetters } from 'vuex'
 export default {
   name: 'AtBatPage',
   props: {
-    id: {
+    cellId: {
+      type: Number,
+      default: 0,
+    },
+    playerId: {
       type: Number,
       default: 0,
     },
   },
   data() {
     return {
-      binding:{field:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
+      binding:{
+        plays:[0,0,0,0,0,0,0,0,0,0,0,0],
+        runs:[0,0,0],
+        hits:[0]
+      },
       fieldSquare:0,
       value:0,
-      message:"",
-      cell:[]
+      ids:[]
     };
   },
   async created() {
-      await this.loadScores();
-      await this.loadCells(this.id);
-      this.cell = this.getCellById(0);
+    this.ids.push(this.$route.params.playerId);
+    this.ids.push(this.$route.params.cellId);
+    await this.loadScores();
+    await this.loadCell(this.ids);
+
+    for(var i =0 ;i <this.cell.plays.length; i++){
+        this.binding.plays[i] = this.cell.plays[i];
+    }
+    for(i =0 ;i <this.cell.runs.length; i++){
+        this.binding.runs[i] = this.cell.runs[i];
+    }
+    for(i =0 ;i <this.cell.hits.length; i++){
+        this.binding.hits[i] = this.cell.hits[i];
+    }
+     this.$forceUpdate()
   },
   computed: {
-    ...mapState(["scores","cells"]),
+    ...mapState(["scores","cell"]),
     ...mapGetters(['getScoresOptions','getCellById']),
   },
   methods: {
-    ...mapActions(["getScoresAction","getCellsAction"]),
+    ...mapActions(["getScoresAction","getCellAction"]),
     async loadScores() {
       await this.getScoresAction();
     },
-    async loadCells(id){
-      await this.getCellsAction(id);
+    async loadCell(ids){
+      await this.getCellAction(ids);
     },
-    setValue(value,position){
+    setField(value,position){
       this.value = value;
       this.fieldSquare = position;
+      
     },
-    setField(score){
-      this.binding.field[this.fieldSquare]=score;
-      this.$forceUpdate()
+    updateField(score){
+      if(this.value === 0){
+          this.binding.runs[this.fieldSquare]=score;
+      }else if(this.value ===1){
+            this.binding.plays[this.fieldSquare]=score;
+      }else if(this.value === 2){
+            this.binding.hits[this.fieldSquare]=score;
+      }
+      this.$forceUpdate();
+    },
+    toSecond(base){
+        if(this.binding.hits[0]=="T" || this.binding.runs[base]!=0) return true;
+        else return false;
     }
   }
 };

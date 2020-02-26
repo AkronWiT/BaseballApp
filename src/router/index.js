@@ -11,7 +11,7 @@ const routes = [
     component: ScoreSheet
   },
   {
-    path: '/atbatpage/:id',
+    path: '/atbatpage/:playerId/:cellId',
     name: 'AtBatPage',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
