@@ -140,7 +140,7 @@
         "options": ["S","D","T","HR","SAC","K","-K","BK","FC","HP","WP","PB","SB","DP","E","SF","IBB","F","L","B","U","0"]
       }
     ],
-    "cells":[
+    "scores":[
       [
            {  "id":1,
                "plays":[1,2,3],

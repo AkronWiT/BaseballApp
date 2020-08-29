@@ -19,12 +19,12 @@
               class="grid-player"
           />
     </router-link>
-    <div v-for="cell in cells[player.id-1]" :key="cell.id">
-      <router-link :to="{name: 'AtBatPage', params:{playerId:player.id-1,cellId:cell.id}}">
+    <div v-for="scoreItem in scores[player.id-1]" :key="scoreItem.id">
+      <router-link :to="{name: 'AtBatPage', params:{playerId:player.id-1,cellId:scoreItem.id}}">
           <AtBat
-            :plays="cell.plays"
-            :hits="cell.hits"
-            :runs="cell.runs"
+            :plays="scoreItem.plays"
+            :hits="scoreItem.hits"
+            :runs="scoreItem.runs"
             class="grid-item"
           />
       </router-link>
@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       players: [],
-      cells: [],
+      scores: [],
       Innings: [1,2,3,4,5,6,7,8,9]
     };
   },
@@ -66,12 +66,12 @@ export default {
   },
   async created() {
     await this.loadPlayers();
-    await this.loadCells();
+    await this.loadScores();
   },
   methods: {
-    async loadCells() {
-          this.cells = [];
-          this.cells = await Data.getCells();
+    async loadScores() {
+          this.scores = [];
+          this.scores = await Data.getScores();
     },
     async loadPlayers() {
       this.player = [];

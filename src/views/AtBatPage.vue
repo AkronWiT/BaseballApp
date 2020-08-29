@@ -42,12 +42,16 @@
                 @click="setField(score)"/>  -->
         <div>
           <span  class="options" 
-          v-for="score in scores[value]['options']" :key="score"
-          @click="updateField(score)">
-              {{score}}
+          v-for="scoreItem in scores[value]['options']" :key="scoreItem"
+          @click="selectedScore(scoreItem)">
+              {{scoreItem}}
           </span>
         </div>
     </div>
+    <router-link :to="{name: 'ScoreSheet'}">
+          <button type="button" @click='saveAtBat()'>Save!</button>
+      </router-link>
+    
   </div>
   
 </template>
@@ -84,43 +88,47 @@ export default {
     this.ids.push(this.$route.params.playerId);
     this.ids.push(this.$route.params.cellId);
     await this.loadScores();
-    await this.loadCell(this.ids);
-
-    for(var i =0 ;i <this.cell.plays.length; i++){
-        this.binding.plays[i] = this.cell.plays[i];
+    await this.loadScore(this.ids);
+    this.binding.id = this.score.id;
+    for(var i =0 ;i <this.score.plays.length; i++){
+        this.binding.plays[i] = this.score.plays[i];
     }
-    for(i =0 ;i <this.cell.runs.length; i++){
-        this.binding.runs[i] = this.cell.runs[i];
+    for(i =0 ;i <this.score.runs.length; i++){
+        this.binding.runs[i] = this.score.runs[i];
     }
-    for(i =0 ;i <this.cell.hits.length; i++){
-        this.binding.hits[i] = this.cell.hits[i];
+    for(i =0 ;i <this.score.hits.length; i++){
+        this.binding.hits[i] = this.score.hits[i];
     }
      this.$forceUpdate()
   },
   computed: {
-    ...mapState(["scores","cell"]),
-    ...mapGetters(['getScoresOptions','getCellById']),
+    ...mapState(["scores","score"]),
+    // ...mapGetters(['getScoresOptions','getCellById']),
+    ...mapGetters(),
   },
   methods: {
-    ...mapActions(["getScoresAction","getCellAction"]),
+    ...mapActions(["getScoresAction","getScoreAction", "updateScoreAction"]),
     async loadScores() {
       await this.getScoresAction();
     },
-    async loadCell(ids){
-      await this.getCellAction(ids);
+    async loadScore(ids){
+      await this.getScoreAction(ids);
     },
     setField(value,position){
       this.value = value;
       this.fieldSquare = position;
       
     },
-    updateField(score){
+    saveAtBat(){
+        this.updateScoreAction(this.binding);
+    },
+    selectedScore(scoreItem){
       if(this.value === 0){
-          this.binding.runs[this.fieldSquare]=score;
+          this.binding.runs[this.fieldSquare]=scoreItem;
       }else if(this.value ===1){
-            this.binding.plays[this.fieldSquare]=score;
+            this.binding.plays[this.fieldSquare]=scoreItem;
       }else if(this.value === 2){
-            this.binding.hits[this.fieldSquare]=score;
+            this.binding.hits[this.fieldSquare]=scoreItem;
       }
       this.$forceUpdate();
     },

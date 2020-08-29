@@ -32,7 +32,7 @@ const getScoring = async function() {
     return [];
   }
 };
-const getCells = async function() {
+const getScores = async function() {
   
   try {
     
@@ -48,18 +48,17 @@ const getCells = async function() {
   }
 };
 
-// const updateCell = async function(cell) {
-//   try {
-//     const response = await axios.put(`${API}/cellInfo/${cell.id}`, cell);
-//     const updatedCell = parseItem(response, 200);
-//     return updatedCell;
-//   } catch (error) {
-//     console.error(error);
-//     return null;
-//   }
-// };
+const updateScore = async function(score) {
+  try {
+    const response = await axios.put(`${API}/scores/${score.id}`, score);
+    const updatedScore = parseItem(response, 200);
+    return updatedScore;
+  } catch (error) {
+    return null;
+  }
+};
 
-const getCell = async function(row, value) {
+const getScore = async function(row, value) {
   
   try {
     
@@ -85,9 +84,19 @@ const parseList = response => {
   return list;
 };
 
+export const parseItem = (response, code) => {
+  if (response.status !== code) throw Error(response.message);
+  let item = response.data;
+  if (typeof item !== 'object') {
+    item = undefined;
+  }
+  return item;
+};
+
 export const Data = {
   getPlayers, 
   getScoring,
-  getCells,
-  getCell
+  getScores,
+  getScore,
+  updateScore
 };
