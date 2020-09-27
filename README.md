@@ -34,7 +34,8 @@ https://www.sublimetext.com/3
 ## hacktoberfest Sign-Up & Details
 ### sign-up
 https://hacktoberfest.digitalocean.com/
-###Details
+
+### Details
 https://hacktoberfest.digitalocean.com/details
 
 ## github Tutorials
