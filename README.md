@@ -26,10 +26,15 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # Hacktoberfest setup info
 
 ## Tools
-Code editors
+### Code editors
+
 https://code.visualstudio.com/
 https://atom.io/
 https://www.sublimetext.com/3
+
+### Design tools
+https://www.sketch.com/
+https://www.figma.com/downloads/
 
 ## hacktoberfest Sign-Up & Details
 ### sign-up
