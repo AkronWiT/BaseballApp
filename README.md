@@ -43,7 +43,14 @@ https://hacktoberfest.digitalocean.com/
 ### Details
 https://hacktoberfest.digitalocean.com/details
 
-## github Tutorials
+### github Tutorials
 https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source
 https://drive.google.com/file/d/1DoRBH3pTXQoKdEjMsN5GqBaqq9QAJdK6/view?usp=sharing
+
+### Vue Tutorial
+https://vuejs.org/v2/guide/
+
+https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Vue_getting_started
+
+https://code.visualstudio.com/docs/nodejs/vuejs-tutorial
 
