@@ -61,3 +61,13 @@ https://drive.google.com/file/d/1DoRBH3pTXQoKdEjMsN5GqBaqq9QAJdK6/view?usp=shari
 ## Vue Mastery YouTube channel
 
 https://www.youtube.com/channel/UCa1zuotKU4Weuw_fLRnPv0A
+
+
+### Vue Tutorial
+https://vuejs.org/v2/guide/
+
+https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Vue_getting_started
+
+https://code.visualstudio.com/docs/nodejs/vuejs-tutorial
+
+
