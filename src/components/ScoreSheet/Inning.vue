@@ -1,6 +1,6 @@
 <template>
-<div>
-  stuff
+<div class ="Inning">
+  {{inning1}}
 </div>
     
 </template>
@@ -9,8 +9,10 @@
 export default {
   name: 'Inning',
   props: {
-    msg: String
-  }
+    msg: String, 
+    inning1: Number
+  },
+  
 }
 </script>
 
@@ -29,5 +31,9 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.Inning {
+  text-align: center;
 }
 </style>
