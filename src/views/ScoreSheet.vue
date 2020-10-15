@@ -1,10 +1,13 @@
 <template >
 <div>
   <div v-if="players">
-      <div v-for="n in 10" :key="n">
+    <div class = "grid-blank Inning" >
+      Players
+    </div>
+      <div v-for="n in 9" :key="n">
           <Inning
-            :in="n"
-            v-bind:class="{ 'grid-blank': n==1, 'grid-inning': n>1}"
+            :inning1="n"
+            v-bind:class="{'grid-inning': n>0}"
           />
       </div>
   </div>
