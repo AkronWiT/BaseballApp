@@ -1,0 +1,13 @@
+@import "common.css";
+
+#plays {
+  border:1px solid blue;
+}
+#runs {
+  float:left;
+  border:1px solid blue;
+}
+#hits {
+  float:right;
+  border:1px solid blue;
+}
